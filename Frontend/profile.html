@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Perfil - Seek Mush on Web</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <!-- CSS Personalizado -->
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="styles.css">
+
+
+</head>
+<body>
+  <!-- Barra de Navegação -->
+ <!-- Barra de Navegação Atualizada -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <i class="bi bi-mushroom"></i> Seek Mush
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html" aria-label="Página Inicial">
+            <i class="bi bi-house"></i> <!-- Ícone de casa para voltar ao index -->
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="infoBtn" aria-label="Informações">
+            <i class="bi bi-info-circle"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="camera.html" aria-label="Câmera">
+            <i class="bi bi-camera"></i>
+          </a>
+        </li>
+
+<li class="nav-item">
+  <button id="darkModeToggle" class="btn btn-link nav-link">
+    <i class="bi bi-moon-fill"></i>
+  </button>
+</li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+            <li><a class="dropdown-item" href="login.html"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
+            <li><a class="dropdown-item" href="register.html"><i class="bi bi-person-plus"></i> Cadastrar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item active" href="profile.html"><i class="bi bi-person"></i> Meu Perfil</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <!-- Conteúdo Principal -->
+  <main class="container my-5 pt-4">
+    <div class="row">
+      <div class="col-lg-4">
+        <!-- Card de Perfil -->
+        <div class="card shadow-sm mb-4">
+          <div class="card-body text-center">
+            <!-- Avatar do Usuário -->
+            <div class="position-relative d-inline-block">
+              <img src="C:\SeekMush\Servidor\uploads\avatars\default-avatar.jpg" id="profileImage" class="rounded-circle mb-3" width="120" height="120" alt="Avatar">
+              <button class="btn btn-sm btn-success position-absolute bottom-0 end-0 rounded-circle"
+                      data-bs-toggle="modal" data-bs-target="#avatarModal">
+                <i class="bi bi-camera"></i>
+              </button>
+            </div>
+            
+            <!-- Informações do Usuário -->
+            <h4 id="profileName"></h4>
+            <p class="text-muted mb-2" id="profileEmail"></p>
+            
+            <!-- Nível do Explorador -->
+            <div class="explorer-level mb-3">
+              <div class="progress mb-2" style="height: 10px;">
+                <div class="progress-bar bg-success" role="progressbar" 
+                     style="width: 45%;" aria-valuenow="45" aria-valuemin="0" 
+                     aria-valuemax="100"></div>
+              </div>
+              <h6 class="mb-0">
+                <i class="bi bi-award"></i> 
+                <span id="explorerLevel">Explorador Intermediário</span>
+              </h6>
+              <small class="text-muted">
+                <span id="identifiedCount">9</span> espécimes identificadas
+              </small>
+            </div>
+            
+            <!-- Estatísticas -->
+            <div class="row text-center stats-row">
+              <div class="col-4">
+                <h5 class="mb-0">12</h5>
+                <small class="text-muted">Favoritos</small>
+              </div>
+              <div class="col-4">
+                <h5 class="mb-0">9</h5>
+                <small class="text-muted">Identificações</small>
+              </div>
+              <div class="col-4">
+                <h5 class="mb-0">3</h5>
+                <small class="text-muted">Descobertas</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Configurações Rápidas -->
+        <div class="card shadow-sm mb-4">
+          <div class="card-header bg-light">
+            <h6 class="mb-0"><i class="bi bi-gear"></i> Configurações Rápidas</h6>
+          </div>
+          <div class="card-body">
+            <div class="list-group list-group-flush">
+              <button class="list-group-item list-group-item-action" 
+                      data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                <i class="bi bi-pencil"></i> Editar Perfil
+              </button>
+              <button class="list-group-item list-group-item-action" 
+                      data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+                <i class="bi bi-shield-lock"></i> Alterar Senha
+              </button>
+              <button class="list-group-item list-group-item-action">
+                <i class="bi bi-bell"></i> Notificações
+              </button>
+              <button class="list-group-item list-group-item-action text-danger">
+                <i class="bi bi-box-arrow-right"></i> Sair
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-8">
+        <!-- Minhas Identificações -->
+        <div class="card shadow-sm mb-4">
+          <div class="card-header bg-light d-flex justify-content-between align-items-center">
+            <h5 class="mb-0"><i class="bi bi-collection"></i> Minhas Identificações</h5>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" 
+                      id="filterDropdown" data-bs-toggle="dropdown">
+                <i class="bi bi-funnel"></i> Filtrar
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item active" href="#">Todos</a></li>
+                <li><a class="dropdown-item" href="#">Comestíveis</a></li>
+                <li><a class="dropdown-item" href="#">Venenosos</a></li>
+                <li><a class="dropdown-item" href="#">Psicoativos</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Favoritos</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row" id="userIdentifications">
+              <!-- Identificações serão carregadas aqui via JavaScript -->
+              <div class="col-12 text-center py-4">
+                <div class="alert alert-info">
+                  <i class="bi bi-info-circle"></i> Nenhuma identificação salva ainda.
+                  <a href="index.html" class="alert-link">Identifique seu primeiro cogumelo</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Sugestões para Explorar -->
+        <div class="card shadow-sm">
+          <div class="card-header bg-light">
+            <h5 class="mb-0"><i class="bi bi-lightbulb"></i> Sugestões para Explorar</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-success">
+                  <div class="card-body">
+                    <h6><i class="bi bi-compass"></i> Cogumelos próximos</h6>
+                    <p class="small text-muted">Baseado na sua localização e época do ano</p>
+                    <button class="btn btn-sm btn-outline-success w-100">
+                      Ver sugestões
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-primary">
+                  <div class="card-body">
+                    <h6><i class="bi bi-journal-bookmark"></i> Guia de Campo</h6>
+                    <p class="small text-muted">Aprenda a identificar espécies comuns</p>
+                    <button class="btn btn-sm btn-outline-primary w-100">
+                      Começar estudo
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card h-100 border-warning">
+                  <div class="card-body">
+                    <h6><i class="bi bi-trophy"></i> Desafios</h6>
+                    <p class="small text-muted">Complete missões para subir de nível</p>
+                    <button class="btn btn-sm btn-outline-warning w-100">
+                      Ver desafios
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card h-100 border-info">
+                  <div class="card-body">
+                    <h6><i class="bi bi-people"></i> Comunidade</h6>
+                    <p class="small text-muted">Conecte-se com outros micólogos</p>
+                    <button class="btn btn-sm btn-outline-info w-100">
+                      Explorar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal para Alterar Avatar -->
+  <div class="modal fade" id="avatarModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title">Alterar Foto de Perfil</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-center">
+          <div class="mb-4">
+            <img src="C:\SeekMush\Servidor\uploads\avatars\default-avatar.jpg" id="avatarPreview" 
+                 class="rounded-circle border border-3 border-success" 
+                 width="150" height="150" alt="Pré-visualização">
+          </div>
+          <div class="d-flex justify-content-center gap-2">
+            <button class="btn btn-outline-success" id="takePhotoBtn">
+              <i class="bi bi-camera"></i> Tirar Foto
+            </button>
+            <button class="btn btn-success" id="uploadPhotoBtn">
+              <i class="bi bi-upload"></i> Enviar Foto
+            </button>
+          </div>
+          <input type="file" id="avatarUpload" accept="image/*" class="d-none">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success" id="saveAvatarBtn">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Editar Perfil -->
+  <div class="modal fade" id="editProfileModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title">Editar Perfil</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="profileForm">
+            <div class="mb-3">
+              <label for="editName" class="form-label">Nome Completo</label>
+              <input type="text" class="form-control" id="editName" value="Carlos Silva">
+            </div>
+            <div class="mb-3">
+              <label for="editEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="editEmail" value="carlos@email.com">
+            </div>
+            <div class="mb-3">
+              <label for="editBio" class="form-label">Biografia</label>
+              <textarea class="form-control" id="editBio" rows="3">Apaixonado por micologia desde criança, coleciono e estudo cogumelos há mais de 5 anos.</textarea>
+            </div>
+            <div class="mb-3">
+              <label for="editLocation" class="form-label">Localização</label>
+              <input type="text" class="form-control" id="editLocation" value="Curitiba, PR">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success" id="saveProfileBtn">Salvar Alterações</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Alterar Senha -->
+  <div class="modal fade" id="changePasswordModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title">Alterar Senha</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="passwordForm">
+            <div class="mb-3">
+              <label for="currentPassword" class="form-label">Senha Atual</label>
+              <input type="password" class="form-control" id="currentPassword">
+            </div>
+            <div class="mb-3">
+              <label for="newPassword" class="form-label">Nova Senha</label>
+              <input type="password" class="form-control" id="newPassword">
+              <div class="form-text">Mínimo de 8 caracteres</div>
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirmar Nova Senha</label>
+              <input type="password" class="form-control" id="confirmPassword">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success" id="savePasswordBtn">Alterar Senha</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5><i class="bi bi-mushroom"></i> Seek Mush on Web</h5>
+          <p class="small">Explore o fascinante mundo dos fungos com nossa plataforma de identificação.</p>
+        </div>
+        <div class="col-md-3">
+          <h5>Links</h5>
+          <ul class="list-unstyled small">
+            <li><a href="#" class="text-white-50">Termos de Uso</a></li>
+            <li><a href="#" class="text-white-50">Política de Privacidade</a></li>
+            <li><a href="#" class="text-white-50">Contato</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>Redes Sociais</h5>
+          <div class="social-links">
+            <a href="#" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-white me-2"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-3">
+      <p class="small mb-0 text-center text-white-50">&copy; 2023 Seek Mush on Web. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  
+  <script>
+    // Script específico para a página de perfil
+    document.addEventListener('DOMContentLoaded', function() {
+      // Carregar identificações do usuário
+      loadUserIdentifications();
+      
+      // Configurações do Avatar
+      const avatarUpload = document.getElementById('avatarUpload');
+      const avatarPreview = document.getElementById('avatarPreview');
+      const profileAvatar = document.getElementById('profileAvatar');
+      
+      avatarUpload.addEventListener('change', function(e) {
+        if (e.target.files && e.target.files[0]) {
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            avatarPreview.src = event.target.result;
+          };
+          reader.readAsDataURL(e.target.files[0]);
+        }
+      });
+      
+      document.getElementById('uploadPhotoBtn').addEventListener('click', function() {
+        avatarUpload.click();
+      });
+      
+      document.getElementById('saveAvatarBtn').addEventListener('click', function() {
+        profileAvatar.src = avatarPreview.src;
+        // Aqui você adicionaria o código para salvar no servidor
+        localStorage.setItem('userAvatar', avatarPreview.src);
+        bootstrap.Modal.getInstance(document.getElementById('avatarModal')).hide();
+      });
+      
+      // Verificar se há avatar salvo no localStorage
+      const savedAvatar = localStorage.getItem('userAvatar');
+      if (savedAvatar) {
+        profileAvatar.src = savedAvatar;
+        avatarPreview.src = savedAvatar;
+      }
+      
+      // Salvar perfil
+      document.getElementById('saveProfileBtn').addEventListener('click', function() {
+        const newName = document.getElementById('editName').value;
+        document.getElementById('profileName').textContent = newName;
+        // Aqui você adicionaria o código para salvar no servidor
+        bootstrap.Modal.getInstance(document.getElementById('editProfileModal')).hide();
+      });
+      
+      // Alterar senha
+      document.getElementById('savePasswordBtn').addEventListener('click', function() {
+        // Validar e salvar nova senha
+        alert('Senha alterada com sucesso!');
+        bootstrap.Modal.getInstance(document.getElementById('changePasswordModal')).hide();
+      });
+    });
+    
+    // Função para carregar identificações do usuário
+    function loadUserIdentifications() {
+      const container = document.getElementById('userIdentifications');
+      
+      // Simular dados carregados do localStorage ou servidor
+      const savedIdentifications = JSON.parse(localStorage.getItem('userIdentifications')) || [];
+      
+      if (savedIdentifications.length > 0) {
+        container.innerHTML = '';
+        
+        savedIdentifications.forEach(mushroom => {
+          const col = document.createElement('div');
+          col.className = 'col-md-6 col-lg-4 mb-3';
+          
+          col.innerHTML = `
+            <div class="card h-100">
+              <img src="${mushroom.image}" class="card-img-top" alt="${mushroom.name}">
+              <div class="card-body">
+                <h6 class="card-title">${mushroom.name}</h6>
+                <p class="small text-muted">Identificado em ${mushroom.date}</p>
+                <div class="d-flex justify-content-between">
+                  <span class="badge ${getBadgeClass(mushroom.type)}">
+                    ${getBadgeText(mushroom.type)}
+                  </span>
+                  <button class="btn btn-sm btn-outline-danger">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+          
+          container.appendChild(col);
+        });
+      }
+      
+      // Atualizar contagem
+      document.getElementById('identifiedCount').textContent = savedIdentifications.length;
+      updateExplorerLevel(savedIdentifications.length);
+    }
+    
+    // Funções auxiliares
+    function getBadgeClass(type) {
+      const classes = {
+        edible: 'bg-success',
+        poisonous: 'bg-danger',
+        psychoactive: 'bg-primary',
+        inedible: 'bg-secondary'
+      };
+      return classes[type] || 'bg-secondary';
+    }
+    
+    function getBadgeText(type) {
+      const texts = {
+        edible: 'Comestível',
+        poisonous: 'Venenoso',
+        psychoactive: 'Psicoativo',
+        inedible: 'Não comestível'
+      };
+      return texts[type] || 'Desconhecido';
+    }
+    
+    function updateExplorerLevel(count) {
+      const levelElement = document.getElementById('explorerLevel');
+      
+      if (count === 0) {
+        levelElement.textContent = 'Iniciante';
+      } else if (count < 5) {
+        levelElement.textContent = 'Explorador Novato';
+      } else if (count < 10) {
+        levelElement.textContent = 'Explorador Intermediário';
+      } else if (count < 20) {
+        levelElement.textContent = 'Explorador Avançado';
+      } else {
+        levelElement.textContent = 'Mestre Micologista';
+      }
+      
+      // Atualizar barra de progresso (simplificado)
+      const progress = Math.min(100, (count / 20) * 100);
+      document.querySelector('.explorer-level .progress-bar').style.width = `${progress}%`;
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="theme.js"></script>
+<!-- <script src="script.js"></script> -->
+<script src="profile.js"></script>
+</body>
+</html>

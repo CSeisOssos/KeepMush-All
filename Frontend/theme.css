@@ -1,0 +1,52 @@
+/* TEMA CLARO (padrão) */
+:root {
+  --bg-body: #ffffff;
+  --text-color: #212529;
+  --navbar-bg: #1e7e34;
+  --card-bg: #ffffff;
+  --border-color: #dee2e6;
+  --success-color: #28a745;
+  --edible-color: #28a745;
+  --poisonous-color: #dc3545;
+  --psychoactive-color: #6f42c1;
+  --inedible-color: #6c757d;
+}
+
+/* TEMA ESCURO */
+[data-bs-theme="dark"] {
+  --bg-body: #212529;
+  --text-color: #f8f9fa;
+  --navbar-bg: #145a25;
+  --card-bg: #2c3034;
+  --border-color: #495057;
+  --success-color: #1e7e34;
+  --edible-color: #1e7e34;
+  --poisonous-color: #c82333;
+  --psychoactive-color: #5a32a3;
+  --inedible-color: #5a6268;
+}
+
+/* APLICAÇÃO OBRIGATÓRIA */
+body {
+  background-color: var(--bg-body) !important;
+  color: var(--text-color) !important;
+}
+
+.navbar {
+  background-color: var(--navbar-bg) !important;
+}
+
+.card {
+  background-color: var(--card-bg) !important;
+  border-color: var(--border-color) !important;
+}
+
+.btn-success {
+  background-color: var(--success-color) !important;
+  border-color: var(--success-color) !important;
+}
+/* Garante que o navbar use a variável CSS */
+.navbar {
+  background-color: var(--navbar-bg) !important;
+  transition: background-color 0.3s ease !important;
+}

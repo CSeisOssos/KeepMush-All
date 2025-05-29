@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seek Mush on Web</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <!-- CSS Personalizado -->
+   <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="styles.css">
+   
+</head>
+<body>
+  <!-- Barra de Navegação -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: var(--navbar-bg);">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <i class="bi bi-mushroom"></i> Seek Mush
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="searchBtn" aria-label="Pesquisar">
+            <i class="bi bi-search"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="infoBtn" aria-label="Informações">
+            <i class="bi bi-info-circle"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="camera.html" aria-label="Câmera">
+            <i class="bi bi-camera"></i>
+          </a>
+        </li>
+        <!-- MODO DARK -->
+<li class="nav-item">
+  <button id="darkModeToggle" class="btn btn-link nav-link">
+  <i class="bi bi-moon-fill"></i>
+</button>
+</li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+            <li><a class="dropdown-item" href="login.html"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
+            <li><a class="dropdown-item" href="register.html"><i class="bi bi-person-plus"></i> Cadastrar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person"></i> Meu Perfil</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <!-- Barra de Pesquisa (oculta inicialmente) -->
+ <div class="container-fluid bg-body-tertiary py-2 d-none" id="searchBar">
+    <div class="container">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Pesquisar cogumelos...">
+        <button class="btn btn-success" type="button">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conteúdo Principal -->
+  <main class="container mt-5 pt-4">
+    <div class="row" id="mushroomsContainer">
+      <!-- Os cogumelos serão inseridos aqui via JavaScript -->
+    </div>
+  </main>
+
+  <!-- Modal de Informações -->
+  <div class="modal fade" id="infoModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title">Bem-vindo, aventureiro!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img src="assets/images/mush.png" class="img-fluid mb-3 mx-auto d-block" style="max-height: 200px;">
+          <p>Deslize para baixo e adentre o incrível mundo dos cogumelos que aguardam sua exploração.</p>
+          <p>Descubra, estude e colecione conquistas para obter o título de Mestre Explorador ao identificar novas espécies.</p>
+          <p class="fw-bold text-warning">Lembre-se que a identificação precisa de cogumelos requer conhecimento especializado.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Detalhes do Cogumelo -->
+  <div class="modal fade" id="mushroomModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="mushroomModalTitle">Nome do Cogumelo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img src="" class="img-fluid mb-3" id="mushroomModalImage">
+          <div id="mushroomModalContent">
+            <!-- Conteúdo será inserido via JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS + Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Nosso JavaScript -->
+  <script src="script.js"></script>
+  <!-- Modal da Câmera -->
+<div class="modal fade" id="cameraModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title">Identificação por Imagem</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <!-- Área de Captura -->
+            <div class="camera-container mb-3">
+              <video id="cameraPreview" class="img-fluid d-none" autoplay playsinline></video>
+              <canvas id="photoCanvas" class="img-fluid d-none"></canvas>
+              <div id="cameraPlaceholder" class="camera-placeholder">
+                <i class="bi bi-camera text-muted" style="font-size: 5rem;"></i>
+                <p class="mt-2">Pronto para capturar</p>
+              </div>
+            </div>
+            
+            <!-- Controles da Câmera -->
+            <div class="d-flex gap-2 mb-3">
+              <button id="startCamera" class="btn btn-success flex-grow-1">
+                <i class="bi bi-camera-video"></i> Ativar Câmera
+              </button>
+              <button id="capturePhoto" class="btn btn-primary flex-grow-1 d-none">
+                <i class="bi bi-camera"></i> Capturar
+              </button>
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <!-- Upload de Arquivo -->
+            <div class="upload-area p-4 border rounded text-center mb-3">
+              <i class="bi bi-cloud-arrow-up text-muted" style="font-size: 2rem;"></i>
+              <h5 class="mt-2">Ou envie uma foto</h5>
+              <input type="file" id="fileInput" accept="image/*" class="d-none">
+              <button class="btn btn-outline-success mt-2" id="uploadBtn">
+                Selecionar Arquivo
+              </button>
+              <div id="fileName" class="small text-muted mt-2"></div>
+            </div>
+            
+            <!-- Pré-visualização -->
+            <div id="imagePreviewContainer" class="d-none">
+              <img id="imagePreview" class="img-fluid rounded">
+              <div class="d-grid gap-2 mt-3">
+                <button id="analyzeButton" class="btn btn-success">
+                  <i class="bi bi-search"></i> Analisar Cogumelo
+                </button>
+                <button id="retryButton" class="btn btn-outline-secondary">
+                  <i class="bi bi-arrow-repeat"></i> Tentar Novamente
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Resultado da Análise (modal aninhado) -->
+<div class="modal fade" id="resultModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title">Resultado da Análise</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center" id="analysisResult">
+        <div id="loadingAnalysis" class="py-4">
+          <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Carregando...</span>
+          </div>
+          <p class="mt-3">Analisando imagem...</p>
+        </div>
+        <div id="resultContent" class="d-none"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Rodapé -->
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5><i class="bi bi-mushroom"></i> Seek Mush on Web</h5>
+          <p class="small">Explore o fascinante mundo dos fungos com nossa plataforma de identificação.</p>
+        </div>
+        <div class="col-md-3">
+          <h5>Links</h5>
+          <ul class="list-unstyled small">
+            <li><a href="#" class="text-white-50">Termos de Uso</a></li>
+            <li><a href="#" class="text-white-50">Política de Privacidade</a></li>
+            <li><a href="#" class="text-white-50">Contato</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>Redes Sociais</h5>
+          <div class="social-links">
+            <a href="#" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-white me-2"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-3">
+      <p class="small mb-0 text-center text-white-50">&copy; 2023 Seek Mush on Web. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+<script src="theme.js"></script>
+</body>
+</html>

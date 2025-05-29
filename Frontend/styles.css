@@ -1,0 +1,227 @@
+/* OVERRIDE DE EMERGÊNCIA */
+body[data-bs-theme="dark"] {
+  background: #212529 !important;
+  color: #f8f9fa !important;
+}
+
+body[data-bs-theme="light"] {
+  background: #ffffff !important;
+  color: #212529 !important;
+}
+
+/* Remove transições problemáticas */
+* {
+  transition: none !important;
+}
+body {
+  padding-top: 56px;
+  background-color: var(--bg-body); /* Alterado de --bg-light para --bg-body */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Cards de cogumelos */
+.mushroom-card {
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  border: none;
+  box-shadow: var(--box-shadow);
+  position: relative;
+}
+
+.mushroom-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.mushroom-img {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.mushroom-card:hover .mushroom-img {
+  transform: scale(1.03);
+}
+
+.mushroom-title {
+  font-weight: bold;
+  color: var(--text-color); /* Alterado de --text-dark para --text-color */
+  margin-bottom: 0.75rem;
+}
+
+/* Badges de tipo */
+.mushroom-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 40px;
+  height: 40px;
+  display: flex !important; /* Forçar display */
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+/* Cores específicas para cada tipo */
+.edible-badge {
+  color: #28a745;
+  border: 2px solid #28a745;
+}
+
+.poisonous-badge {
+  color: #dc3545;
+  border: 2px solid #dc3545;
+}
+
+.psychoactive-badge {
+  color: #6f42c1;
+  border: 2px solid #6f42c1;
+}
+
+.inedible-badge {
+  color: #6c757d;
+  border: 2px solid #6c757d;
+}
+/* Tooltips */
+.tooltip {
+  font-size: 0.9rem;
+}
+
+.tooltip-inner {
+  padding: 0.3rem 0.6rem;
+  background-color: var(--text-dark);
+}
+
+.bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before,
+.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: var(--text-dark);
+}
+
+/* Modal de detalhes */
+.modal-content {
+  border-radius: var(--border-radius);
+  border: none;
+}
+
+
+#mushroomModalImage {
+  border-radius: var(--border-radius);
+  max-height: 300px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.mushroom-description p {
+  margin-bottom: 1rem;
+}
+
+.mushroom-description .fw-bold {
+  color: var(--text-dark);
+  margin-top: 1.5rem;
+}
+
+/* Barra de pesquisa */
+#searchBar {
+  transition: all 0.3s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Modal da câmera */
+.camera-container {
+  background-color: var(--bg-body);
+  border-radius: var(--border-radius);
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.camera-placeholder {
+  text-align: center;
+  color: var(--text-secondary); /* Adicionado para consistência */
+}
+
+.upload-area {
+  cursor: pointer;
+  transition: all 0.3s;
+  aspect-ratio: 4/3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  border: 2px dashed var(--edible-color);
+}
+
+.upload-area:hover {
+  background-color: rgba(25, 135, 84, 0.05);
+}
+
+#imagePreview {
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: var(--border-radius);
+}
+
+/* Alertas */
+.alert-warning {
+  background-color: rgba(255, 193, 7, 0.1);
+  border-color: rgba(255, 193, 7, 0.3);
+  color: var(--text-dark);
+}
+
+.alert-danger {
+  background-color: rgba(220, 53, 69, 0.1);
+  border-color: rgba(220, 53, 69, 0.3);
+}
+
+/* Botões */
+.btn-success {
+  background-color: var(--edible-color);
+  border-color: var(--edible-color);
+}
+
+.btn-outline-success {
+  color: var(--edible-color);
+  border-color: var(--edible-color);
+}
+
+.btn-outline-success:hover {
+  background-color: var(--edible-color);
+  color: white;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .mushroom-img {
+    height: 150px;
+  }
+  
+  .mushroom-badge {
+    font-size: 1rem;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .camera-container, .upload-area {
+    aspect-ratio: 1;
+  }
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.mushroom-card {
+  animation: fadeIn 0.5s ease-out;
+}
