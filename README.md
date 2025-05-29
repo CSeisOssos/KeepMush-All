@@ -50,12 +50,12 @@ pip install sqlalchemy tensorflow fastapi traceback pil numpy pandas pydantic cs
 4️⃣ - Execute o arquivo **"create_tabels.py"** localizado dentro da pasta **"db"** no diretório raiz  
 5️⃣ - Verifique se as tabelas **"imagens_dos_usuarios"** e **"usuarios"** foram criadas  
 6️⃣ - Execute o arquivo **"populate.py"** localizado dentro da pasta **"db"** no diretório raiz  
-7️⃣ - Verifique se a tabela **"mushrroms"** foi adicionada e se está populada com o dataset presente nos arquivos baixados  
+7️⃣ - Verifique se a tabela **"mushrooms"** foi adicionada e se está populada com o dataset presente nos arquivos baixados  
 8️⃣ - No terminal do seu editor de código (presumivelmente **VS Code**), acesse a pasta **"Servidor"** e digite o comando:  
 ```bash
 uvicorn main:app --reload
 ```
-9️⃣ - Para verificar se a conexão com a API deu certo, acesse o endereço:  
+9️⃣ - Para verificar se a conexão com a API deu certo, acesse o seguinte endereço no seu navegador:  
 ```
 localhost:8000
 ```
@@ -71,7 +71,7 @@ localhost:8000
 1️⃣ - Consertar/desenvolver todos os sistemas inerentes ao arquivo **profile.html**  
 > *(Por enquanto apenas o nome de usuário e email são mostrados de maneira dinâmica)*
 
-2️⃣ - Testar o upload de imagens e resposta da IA  
+2️⃣ - Desenvolver e Testar o upload de imagens e resposta da IA (ela já consegue ser testada via API, mas não diretamente do Front)
 
 3️⃣ - Implementar uma pesquisa por nome da espécie retornada pela IA para que as informações da espécie apareçam ao usuário  
 > *(Um resumo de uma página da Wikipedia já serve)*
